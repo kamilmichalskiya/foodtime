@@ -1,10 +1,10 @@
+import { ThemeProvider } from "@mui/material";
 import { Session } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
-import AboutMe from "./AboutMe";
 import Account from "./Account";
-import "./App.css";
-import Header from "./Header";
+import ResponsiveAppBar from "./ResponsiveAppBar";
 import { supabase } from "./supabaseClient";
+import { themeOptions } from "./ThemeOptions";
 
 function App() {
   const [session, setSession] = useState<Session | null>(null);
@@ -20,10 +20,10 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <Header session={session} />
-      {!session ? <AboutMe /> : <Account session={session} />}
-    </div>
+    <ThemeProvider theme={themeOptions}>
+      <ResponsiveAppBar session={session}></ResponsiveAppBar>
+      {!session ? null : <Account session={session} />}
+    </ThemeProvider>
   );
 }
 
