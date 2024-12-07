@@ -1,7 +1,8 @@
-import { ThemeProvider } from "@mui/material";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 import { Session } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
 import Account from "./Account";
+import Calculator from "./Calculator";
 import ResponsiveAppBar from "./ResponsiveAppBar";
 import { supabase } from "./supabaseClient";
 import { themeOptions } from "./ThemeOptions";
@@ -21,8 +22,9 @@ function App() {
 
   return (
     <ThemeProvider theme={themeOptions}>
+      <CssBaseline />
       <ResponsiveAppBar session={session}></ResponsiveAppBar>
-      {!session ? null : <Account session={session} />}
+      {!session ? <Calculator /> : <Account session={session} />}
     </ThemeProvider>
   );
 }
