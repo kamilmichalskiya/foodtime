@@ -13,9 +13,10 @@ import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
 import { Session } from "@supabase/supabase-js";
 import { useState } from "react";
+import { NAV_TABS } from "./navigation";
 import { supabase } from "./supabaseClient";
 
-const PAGES = ["Kalkulator", "Przepisy", "Zakupy", "Konto"];
+const PAGES = NAV_TABS;
 
 interface AppNavigationBarProps {
   session: Session;
@@ -90,16 +91,16 @@ export default function AppNavigationBar({
         onClose={() => setAnchorElNav(null)}
         sx={{ display: { xs: "block", md: "none" } }}
       >
-        {PAGES.map((page, idx) => (
+        {PAGES.map((tabObj) => (
           <MenuItem
-            key={page}
-            selected={tab === idx}
+            key={tabObj.label}
+            selected={tab === tabObj.index}
             onClick={() => {
-              onTabChange(idx);
+              onTabChange(tabObj.index);
               setAnchorElNav(null);
             }}
           >
-            <Typography sx={{ textAlign: "center" }}>{page}</Typography>
+            <Typography sx={{ textAlign: "center" }}>{tabObj.label}</Typography>
           </MenuItem>
         ))}
       </Menu>
@@ -109,19 +110,19 @@ export default function AppNavigationBar({
   // Navigation menu for desktop
   const renderDesktopMenu = () => (
     <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-      {PAGES.map((page, idx) => (
+      {PAGES.map((tabObj) => (
         <Button
-          key={page}
-          onClick={() => onTabChange(idx)}
+          key={tabObj.label}
+          onClick={() => onTabChange(tabObj.index)}
           sx={{
             my: 2,
-            color: tab === idx ? "#FFD700" : "white",
+            color: tab === tabObj.index ? "#FFD700" : "white",
             display: "block",
-            fontWeight: tab === idx ? 700 : 400,
-            borderBottom: tab === idx ? "2px solid #FFD700" : "none",
+            fontWeight: tab === tabObj.index ? 700 : 400,
+            borderBottom: tab === tabObj.index ? "2px solid #FFD700" : "none",
           }}
         >
-          {page}
+          {tabObj.label}
         </Button>
       ))}
     </Box>
@@ -133,7 +134,13 @@ export default function AppNavigationBar({
     supabase.auth.signOut();
   };
   const settings = [
-    { name: "Profil", func: () => setAnchorElUser(null) },
+    {
+      name: "Profil",
+      func: () => {
+        setAnchorElUser(null);
+        onTabChange(3);
+      },
+    },
     { name: "Wyloguj", func: handleLogout },
   ];
 
