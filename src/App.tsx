@@ -9,7 +9,7 @@ import { themeOptions } from "./ThemeOptions";
 
 function App() {
   const [session, setSession] = useState<Session | null>(null);
-  const [tab, setTab] = useState(0);
+  const [tab, setTab] = useState(3);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
