@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/foodtime/static/css/main.e6c13ad2.css",
-    "main.js": "/foodtime/static/js/main.fa2074ed.js",
+    "main.js": "/foodtime/static/js/main.5268c6df.js",
     "static/js/952.c3a6d858.chunk.js": "/foodtime/static/js/952.c3a6d858.chunk.js",
     "static/js/453.8091e920.chunk.js": "/foodtime/static/js/453.8091e920.chunk.js",
     "service-worker.js": "/foodtime/service-worker.js",
     "index.html": "/foodtime/index.html",
     "main.e6c13ad2.css.map": "/foodtime/static/css/main.e6c13ad2.css.map",
-    "main.fa2074ed.js.map": "/foodtime/static/js/main.fa2074ed.js.map",
+    "main.5268c6df.js.map": "/foodtime/static/js/main.5268c6df.js.map",
     "952.c3a6d858.chunk.js.map": "/foodtime/static/js/952.c3a6d858.chunk.js.map",
     "453.8091e920.chunk.js.map": "/foodtime/static/js/453.8091e920.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.fa2074ed.js"
+    "static/js/main.5268c6df.js"
   ]
 }
